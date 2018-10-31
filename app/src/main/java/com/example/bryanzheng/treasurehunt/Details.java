@@ -1,4 +1,8 @@
 package com.example.bryanzheng.treasurehunt;
 
-public class Details {
+import android.support.v4.app.Fragment;
+
+public class Details extends Fragment{
+
+
 }

@@ -33,16 +33,16 @@ public class Tab1Fragment extends Fragment{
         View view = inflater.inflate(R.layout.tab1fragment,container,false);
         listView = (ListView) view.findViewById(R.id.listview);
         arrayList = new ArrayList<>();
-        arrayAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_activated_1);
-        arrayAdapter.add("Leonardo");
-        arrayAdapter.add("Michelangelo");
-        arrayAdapter.add("Donatello");
+        NinjaTurtle.NinjaTurtles = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_activated_1);
+
         listView.setAdapter(arrayAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(Tab1Fragment.this, Details.class);
+                String s = arrayList.get(position);
+                MainActivity mainActivity = (MainActivity)getActivity();
+                mainActivity.findList(s);
             }
         });
         return view;
