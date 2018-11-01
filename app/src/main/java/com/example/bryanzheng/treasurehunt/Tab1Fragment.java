@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.AppComponentFactory;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.telecom.Call;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,28 +25,19 @@ import java.util.ArrayList;
  * Created by User on 2/28/2017.
  */
 
-public class Tab1Fragment extends Fragment{
+public class Tab1Fragment extends ListFragment {
     private static final String TAG = "Tab1Fragment";
-    ListView listView;
-    ArrayList<String> arrayList;
-    ArrayAdapter<String> arrayAdapter;
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.tab1fragment,container,false);
-        listView = (ListView) view.findViewById(R.id.listview);
-        arrayList = new ArrayList<>();
-        NinjaTurtle.NinjaTurtles = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_activated_1);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        listView.setAdapter(arrayAdapter);
+        ArrayAdapter<NinjaTurtle> adapter = new ArrayAdapter<>(
+                inflater.getContext(), android.R.layout.simple_list_item_1,
+                NinjaTurtle.NinjaTurtles);
+        setListAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String s = arrayList.get(position);
-                MainActivity mainActivity = (MainActivity)getActivity();
-                mainActivity.findList(s);
-            }
-        });
-        return view;
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
+
+
 }

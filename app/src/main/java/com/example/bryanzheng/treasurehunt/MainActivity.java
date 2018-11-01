@@ -53,14 +53,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void findList(String string) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
-        Details details = new Details();
-        Bundle bundle = new Bundle();
-        bundle.putString("s", string);
-        details.setArguments(bundle);
-        transaction.replace(R.id.tabs,details);
-        transaction.commit();
-    }
+//    public void findList(String string) {
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+//        Details details = new Details();
+//        Bundle bundle = new Bundle();
+//        bundle.putString("s", string);
+//        //details.setArguments(bundle);
+//        //transaction.replace(R.id.tabs,details);
+//        transaction.commit();
+//    }
 }
