@@ -25,13 +25,13 @@ public class NinjaTurtle {
         return name;
     }
     public int getLevel(){
-        return this.level;
+        return level;
     }
     public int getHealth() {
-        return this.health;
+        return health;
     }
     public int getStamina() {
-        return this.stamina;
+        return stamina;
     }
     public int getImageResourceID() {
         return imageResourceID;

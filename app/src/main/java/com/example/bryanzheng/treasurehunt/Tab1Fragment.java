@@ -27,6 +27,31 @@ import java.util.ArrayList;
 
 public class Tab1Fragment extends ListFragment {
     private static final String TAG = "Tab1Fragment";
+
+    interface Listener{
+        void itemClicked(long id);
+    }
+
+    private Listener listener;
+
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        this.listener = (Listener)context;
+    }
+
+    @Override
+    public void onListItemClick(ListView listView, View itemView, int position, long id) {
+        if(listener != null){
+            listener.itemClicked(id);
+        }
+
+    }
+
+    public Tab1Fragment() {
+        // Required empty public constructor
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

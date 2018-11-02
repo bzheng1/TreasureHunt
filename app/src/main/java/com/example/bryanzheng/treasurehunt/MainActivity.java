@@ -1,5 +1,6 @@
 package com.example.bryanzheng.treasurehunt;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -20,16 +21,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Tab1Fragment.Listener {
 
-    private static final String TAG = "MainActivity";
+    //private static final String TAG = "MainActivity";
     private SectionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
-
-
+    @Override
+    public void itemClicked(long id){
+        Intent intent = new Intent(this, DetailsActivity.class);
+        intent.putExtra(DetailsActivity.EXTRA_ID, id);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
     }
 
     private void setupViewPager(ViewPager viewPager){
@@ -52,15 +56,4 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
-
-//    public void findList(String string) {
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
-//        Details details = new Details();
-//        Bundle bundle = new Bundle();
-//        bundle.putString("s", string);
-//        //details.setArguments(bundle);
-//        //transaction.replace(R.id.tabs,details);
-//        transaction.commit();
-//    }
 }
